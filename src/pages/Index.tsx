@@ -131,6 +131,40 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Interviews Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="font-heading text-3xl font-bold mb-2">Executive Interviews</h2>
+                <p className="text-muted-foreground">Insights from Kuwait's tech leaders</p>
+              </div>
+              <Button variant="outline">
+                View All Interviews
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-card border rounded-lg p-6 text-center">
+                <div className="text-muted-foreground text-sm mb-4">No interviews available yet</div>
+                <p className="text-sm text-muted-foreground">Check back soon for exclusive interviews with industry leaders</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sponsors Section - Reserved Space */}
+        <section className="bg-muted/10 py-8 border-t border-b">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">Sponsored Content</p>
+              <div className="mt-4 h-20 bg-muted/30 rounded-lg flex items-center justify-center">
+                <span className="text-muted-foreground text-sm">Sponsor space reserved</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Company Spotlight */}
         <section className="bg-muted/30 py-16">
           <div className="container mx-auto px-4">
