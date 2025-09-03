@@ -1,51 +1,54 @@
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useLanguage } from "@/hooks/useLanguage";
+import { cn } from "@/lib/utils";
 
 const Footer = () => {
+  const { language, t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const footerSections = [
     {
-      title: "Sections",
+      title: t('footer.sections'),
       links: [
-        { label: "Kuwait News", href: "/kuwait-news" },
-        { label: "Telecom & 5G", href: "/telecom-5g" },
-        { label: "Banking & FinTech", href: "/banking-fintech" },
-        { label: "Cybersecurity", href: "/cybersecurity" },
-        { label: "Enterprise IT", href: "/enterprise-it" },
-        { label: "Startups", href: "/startups" },
+        { label: t('header.kuwaitNews'), href: "/kuwait-news" },
+        { label: t('header.telecom5g'), href: "/telecom-5g" },
+        { label: t('header.bankingFintech'), href: "/banking-fintech" },
+        { label: t('header.cybersecurity'), href: "/cybersecurity" },
+        { label: t('header.enterpriseIT'), href: "/enterprise-it" },
+        { label: t('header.startups'), href: "/startups" },
       ],
     },
     {
-      title: "Resources",
+      title: t('footer.resources'),
       links: [
-        { label: "Reviews", href: "/reviews" },
-        { label: "How-to Guides", href: "/how-to" },
-        { label: "Data & Charts", href: "/data-charts" },
-        { label: "Events", href: "/events" },
-        { label: "Jobs", href: "/jobs" },
-        { label: "Opinion", href: "/opinion" },
+        { label: t('footer.reviews'), href: "/reviews" },
+        { label: t('footer.howToGuides'), href: "/how-to" },
+        { label: t('footer.dataCharts'), href: "/data-charts" },
+        { label: t('footer.events'), href: "/events" },
+        { label: t('footer.jobs'), href: "/jobs" },
+        { label: t('footer.opinion'), href: "/opinion" },
       ],
     },
     {
-      title: "Companies",
+      title: t('footer.companies'),
       links: [
         { label: "Zain Kuwait", href: "/company/zain" },
         { label: "stc Kuwait", href: "/company/stc" },
         { label: "Ooredoo Kuwait", href: "/company/ooredoo" },
         { label: "CBK", href: "/company/cbk" },
-        { label: "All Companies", href: "/companies" },
+        { label: t('footer.allCompanies'), href: "/companies" },
       ],
     },
     {
-      title: "About",
+      title: t('footer.about'),
       links: [
-        { label: "About Us", href: "/about" },
-        { label: "Contact", href: "/contact" },
-        { label: "Privacy Policy", href: "/privacy" },
-        { label: "Terms of Service", href: "/terms" },
-        { label: "Advertise", href: "/advertise" },
+        { label: t('footer.aboutUs'), href: "/about" },
+        { label: t('footer.contact'), href: "/contact" },
+        { label: t('footer.privacy'), href: "/privacy" },
+        { label: t('footer.terms'), href: "/terms" },
+        { label: t('footer.advertise'), href: "/advertise" },
       ],
     },
   ];
@@ -67,20 +70,19 @@ const Footer = () => {
             </div>
             
             <p className="text-muted-foreground mb-6 max-w-md">
-              Kuwait's leading source for technology news, digital transformation insights, 
-              and innovation stories shaping the region's future.
+              {t('footer.description')}
             </p>
 
             {/* Newsletter Signup */}
             <div className="space-y-3">
-              <h4 className="font-heading font-semibold">Stay Updated</h4>
-              <div className="flex space-x-2">
+              <h4 className="font-heading font-semibold">{t('footer.stayUpdated')}</h4>
+              <div className={cn("flex space-x-2", language === 'ar' && "space-x-reverse")}>
                 <Input 
                   type="email" 
-                  placeholder="Enter your email" 
+                  placeholder={t('footer.enterEmail')} 
                   className="flex-1"
                 />
-                <Button>Subscribe</Button>
+                <Button>{t('footer.subscribe')}</Button>
               </div>
             </div>
 
@@ -140,7 +142,7 @@ const Footer = () => {
             </div>
             
             <div className="text-sm text-muted-foreground">
-              © {currentYear} KuwaitDigitalBox. All rights reserved.
+              © {currentYear} KuwaitDigitalBox. {t('footer.allRights')}.
             </div>
           </div>
         </div>

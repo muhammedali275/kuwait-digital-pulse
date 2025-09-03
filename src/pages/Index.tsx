@@ -5,8 +5,12 @@ import ArticleCard from "@/components/ArticleCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Clock, Users, BarChart3 } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { cn } from "@/lib/utils";
 
 const Index = () => {
+  const { language, t } = useLanguage();
+  
   // Mock data for demo
   const latestArticles = [
     {
@@ -77,10 +81,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { icon: TrendingUp, label: "Daily Readers", value: "25K+", color: "text-tech-blue" },
-    { icon: Clock, label: "Articles Published", value: "500+", color: "text-tech-green" },
-    { icon: Users, label: "Tech Companies", value: "150+", color: "text-tech-purple" },
-    { icon: BarChart3, label: "Market Reports", value: "50+", color: "text-tech-orange" },
+    { icon: TrendingUp, label: t('home.dailyReaders'), value: "25K+", color: "text-tech-blue" },
+    { icon: Clock, label: t('home.articlesPublished'), value: "500+", color: "text-tech-green" },
+    { icon: Users, label: t('home.techCompanies'), value: "150+", color: "text-tech-purple" },
+    { icon: BarChart3, label: t('home.marketReports'), value: "50+", color: "text-tech-orange" },
   ];
 
   return (
@@ -115,11 +119,11 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="font-heading text-3xl font-bold mb-2">Latest Technology News</h2>
-                <p className="text-muted-foreground">Stay updated with Kuwait's digital transformation</p>
+                <h2 className="font-heading text-3xl font-bold mb-2">{t('home.latestNews')}</h2>
+                <p className="text-muted-foreground">{t('home.stayUpdated')}</p>
               </div>
-              <Button variant="outline">
-                View All Articles
+              <Button variant="outline" className="btn-professional">
+                {t('home.viewAllArticles')}
               </Button>
             </div>
 
@@ -136,11 +140,11 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="font-heading text-3xl font-bold mb-2">Executive Interviews</h2>
-                <p className="text-muted-foreground">Insights from Kuwait's tech leaders</p>
+                <h2 className="font-heading text-3xl font-bold mb-2">{t('home.executiveInterviews')}</h2>
+                <p className="text-muted-foreground">{t('home.techLeaders')}</p>
               </div>
-              <Button variant="outline">
-                View All Interviews
+              <Button variant="outline" className="btn-professional">
+                {t('home.viewAllInterviews')}
               </Button>
             </div>
             
@@ -169,9 +173,9 @@ const Index = () => {
         <section className="bg-muted/30 py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">Company Spotlight</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4">{t('home.companySpotlight')}</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Discover the leading technology companies driving innovation in Kuwait's digital economy
+                {t('home.companyDescription')}
               </p>
             </div>
 
@@ -184,7 +188,7 @@ const Index = () => {
                     </span>
                   </div>
                   <h3 className="font-semibold mb-2">{company}</h3>
-                  <p className="text-sm text-muted-foreground">View Company Hub</p>
+                  <p className="text-sm text-muted-foreground">{t('home.viewCompanyHub')}</p>
                 </div>
               ))}
             </div>
@@ -195,23 +199,22 @@ const Index = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-center text-primary-foreground">
-              <h2 className="font-heading text-3xl font-bold mb-4">Stay in the Loop</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4">{t('home.stayInLoop')}</h2>
               <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
-                Get the latest Kuwait tech news, startup stories, and digital transformation insights 
-                delivered to your inbox every week.
+                {t('home.newsletterDescription')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <div className={cn("flex flex-col sm:flex-row gap-4 max-w-md mx-auto", language === 'ar' && "sm:flex-row-reverse")}>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('footer.enterEmail')}
                   className="flex-1 px-4 py-3 rounded-lg text-foreground"
                 />
-                <Button variant="secondary" size="lg">
-                  Subscribe Now
+                <Button variant="secondary" size="lg" className="btn-professional">
+                  {t('home.subscribeNow')}
                 </Button>
               </div>
               <p className="text-primary-foreground/70 text-sm mt-4">
-                Join 25,000+ tech professionals already subscribed
+                {t('home.joinProfessionals')}
               </p>
             </div>
           </div>
